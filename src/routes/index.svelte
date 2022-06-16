@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
 	import { addData } from '../stores/data-store';
 
 	let name = '';
@@ -61,23 +62,23 @@
 <h1 class="text-4xl text-center my-8">Tell Us About Yourself</h1>
 
 {#if formSubmitted}
-	<div class="max-w-2xl mx-auto shadow-md  p-8">
+	<div class="max-w-2xl mx-auto shadow-md  p-8" transition:fade={{ duration: 150 }}>
 		<h2 class="text-2xl">Thank you for telling us about yourself. Your results have been saved</h2>
 	</div>
 {:else}
 	<form class="container max-w-md w-full mx-auto space-y-4" on:submit|preventDefault={onSubmit}>
 		<div class="flex flex-col space-y-2">
 			<label for="name">Full Name</label>
-			<input type="text" name="name" id="name" bind:value={name} />
+			<input type="text" name="name" id="name" bind:value={name} required />
 		</div>
 		<div class="flex flex-col space-y-2">
 			<label for="email">Email</label>
-			<input type="email" id="email" bind:value={email} />
+			<input type="email" id="email" bind:value={email} required />
 		</div>
 
 		<div class="flex flex-col space-y-2">
 			<label for="date">Date of Birth</label>
-			<input type="date" id="date" bind:value={dob} />
+			<input type="date" id="date" bind:value={dob} required />
 		</div>
 
 		<div class="flex justify-between items-center ">
