@@ -33,10 +33,7 @@
 			monthAge = 12 + currentMonth - dobMonth;
 		}
 
-		// create new Date() and get date in format MM/DD/YYYY
-		let date = new Date();
-		let dateString = date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
-
+		// get birth month
 		let birthMonth: string;
 		dobMonth += 1;
 
@@ -46,13 +43,17 @@
 			birthMonth = dobMonth.toString();
 		}
 
+		// create new Date() and get date in format MM/DD/YYYY
+		let date = new Date();
+		let createdAt = date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
+
 		addData({
 			name,
 			email,
 			dob: `${birthday.getDate()}/${birthMonth}/${birthday.getFullYear()}`,
 			color,
 			age: `${yearsAge} years and ${monthAge + 1} months`,
-			createdAt: dateString
+			createdAt
 		});
 
 		formSubmitted = true;
