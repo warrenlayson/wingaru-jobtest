@@ -7,14 +7,33 @@
 	let dob = '';
 	let color = '#000';
 
+	const today = new Date();
+	const currentYear = today.getFullYear();
+	const currentMonth = today.getMonth();
+
+	const getMaxDate = () => {
+		const currentDay = today.getDate();
+		let month = currentMonth + 1;
+		let m = '';
+		let d = '';
+
+		if (month < 10) {
+			m = '0' + month.toString();
+		}
+
+		if (currentDay < 10) {
+			d = '0' + currentDay.toString();
+		} else {
+			d = currentDay.toString();
+		}
+
+		return currentYear + '-' + m + '-' + d;
+	};
+
 	let formSubmitted = false;
 
 	const onSubmit = () => {
-		let today = new Date();
 		let birthday = new Date(dob);
-
-		const currentYear = today.getFullYear();
-		const currentMonth = today.getMonth();
 
 		const dobYear = birthday.getFullYear();
 		let dobMonth = birthday.getMonth();
@@ -79,7 +98,7 @@
 
 		<div class="flex flex-col space-y-2">
 			<label for="date">Date of Birth</label>
-			<input type="date" id="date" bind:value={dob} required />
+			<input type="date" id="date" bind:value={dob} max={getMaxDate()} required />
 		</div>
 
 		<div class="flex justify-between items-center ">
