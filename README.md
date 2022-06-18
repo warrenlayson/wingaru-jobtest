@@ -11,10 +11,10 @@ Job Test
 
 Choose a folder that you like to clone the repository.
  ### Windows
- C:/<User>/dev
+ C:/[<User>]/dev
  
  ### Linux
- /home/<User>/dev
+ /home/[<User>]/dev
  
  HTTP
  ```bash
