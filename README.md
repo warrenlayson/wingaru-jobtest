@@ -2,6 +2,10 @@
 
 Job Test
 
+## Installing Node
+
+Install [NodeJS](https://nodejs.org/en/)
+
 ## Installing Depedencies
 
 ```bash
@@ -22,7 +26,7 @@ npm run dev -- --open
 
 ## Building
 
-To create a production version of your app:
+To create a production version of the app:
 
 ```bash
 npm run build
