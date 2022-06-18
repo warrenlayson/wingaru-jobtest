@@ -12,7 +12,7 @@ Job Test
 Choose a folder that you like to clone the repository.
 
  
- HTTP
+ HTTPS
  ```bash
  git clone https://github.com/warrenlayson/wingaru-jobtest.git
  ```
