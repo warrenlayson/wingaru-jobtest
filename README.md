@@ -2,6 +2,10 @@
 
 Job Test
 
+## Installing Node
+
+Install [NodeJS](https://nodejs.org/en/)
+
 ## Installing Depedencies
 
 ```bash
