@@ -31,14 +31,20 @@ const formDataValidator = z.object({
 
 type FormData = z.infer<typeof formDataValidator>;
 
+const getPaddedMonth = (month: number) => {
+	return month < 10 ? `0${month}` : month;
+};
+
 export const addData = (input: FormData) => {
 	const today = new Date();
 	const currentYear = today.getFullYear();
 	const currentMonth = today.getMonth() + 1;
+	const currentDay = today.getDate();
 
 	const birthday = new Date(input.dob);
 	const dobYear = birthday.getFullYear();
 	const dobMonth = birthday.getMonth() + 1;
+	const dobDay = birthday.getDate();
 
 	// get years
 	let yearsAge = currentYear - dobYear;
@@ -54,21 +60,13 @@ export const addData = (input: FormData) => {
 		monthAge = 12 + currentMonth - dobMonth;
 	}
 
-	// get birth month
-	let birthMonth: string;
-
-	if (dobMonth < 10) {
-		birthMonth = '0' + dobMonth;
-	} else {
-		birthMonth = dobMonth.toString();
-	}
 	data.update((data) => [
 		...data,
 		{
 			...input,
-			dob: `${birthMonth}/${dobYear}`,
+			dob: `${dobDay}/${getPaddedMonth(dobMonth)}/${dobYear}`,
 			age: `${yearsAge} years ${monthAge} months`,
-			createdAt: today.toISOString()
+			createdAt: `${getPaddedMonth(currentMonth)}/${currentDay}/${currentYear}`
 		}
 	]);
 };
