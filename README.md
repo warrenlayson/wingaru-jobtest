@@ -5,11 +5,7 @@ Job Test
 # How to Download
 
 ## NodeJS
- <ol>
-    <li>
-      Download [NodeJS](https://nodejs.org/en/download/) and follow the installation instructions on that page.
-    </li>
- </ol>
+ 1. Download [NodeJS](https://nodejs.org/en/download/) and follow the installation instructions on that page.
  
 # Clone the repo
  
