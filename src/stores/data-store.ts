@@ -62,7 +62,7 @@ export const addData = (input: FormData) => {
 		{
 			...input,
 			dob: `${dobDay}/${getPaddedMonth(dobMonth)}/${dobYear}`,
-			age: `${yearsAge} years ${monthAge + 1} months`,
+			age: `${yearsAge} years and ${monthAge + 1} months`,
 			createdAt: `${getPaddedMonth(currentMonth)}/${currentDay}/${currentYear}`
 		}
 	]);
