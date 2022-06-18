@@ -1,34 +1,12 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { addData } from '../stores/data-store';
+	import { getMaxDate } from '../utils/get-max-date';
 
 	let name = '';
 	let email = '';
 	let dob = '';
-	let color = '#000';
-
-	const getMaxDate = () => {
-		const today = new Date();
-		const currentYear = today.getFullYear();
-		const currentMonth = today.getMonth();
-		const currentDay = today.getDate();
-
-		let month = currentMonth + 1;
-		let m = '';
-		let d = '';
-
-		if (month < 10) {
-			m = '0' + month.toString();
-		}
-
-		if (currentDay < 10) {
-			d = '0' + currentDay.toString();
-		} else {
-			d = currentDay.toString();
-		}
-
-		return currentYear + '-' + m + '-' + d;
-	};
+	let color = '#000000';
 
 	let formSubmitted = false;
 

@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
 import { z } from 'zod';
+import { getPaddedMonth } from '../utils/get-padded-month';
 
 const dataValidator = z.object({
 	name: z.string(),
@@ -31,10 +32,6 @@ const formDataValidator = z.object({
 
 type FormData = z.infer<typeof formDataValidator>;
 
-const getPaddedMonth = (month: number) => {
-	return month < 10 ? `0${month}` : month;
-};
-
 export const addData = (input: FormData) => {
 	const today = new Date();
 	const currentYear = today.getFullYear();
@@ -65,7 +62,7 @@ export const addData = (input: FormData) => {
 		{
 			...input,
 			dob: `${dobDay}/${getPaddedMonth(dobMonth)}/${dobYear}`,
-			age: `${yearsAge} years ${monthAge} months`,
+			age: `${yearsAge} years ${monthAge + 1} months`,
 			createdAt: `${getPaddedMonth(currentMonth)}/${currentDay}/${currentYear}`
 		}
 	]);
