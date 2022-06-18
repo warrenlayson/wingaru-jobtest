@@ -8,6 +8,13 @@ Job Test
  1. Download [NodeJS](https://nodejs.org/en/download/) and follow the installation instructions on that page.
  
 # Clone the repo
+
+Choose a folder that you like to clone the repository.
+ ### Windows
+ C:/<User>/dev
+ 
+ ### Linux
+ /home/<User>/dev
  
  HTTP
  ```bash
