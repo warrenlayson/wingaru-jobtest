@@ -2,9 +2,31 @@
 
 Job Test
 
-## Installing Node
+# How to Download
 
-Install [NodeJS](https://nodejs.org/en/)
+## NodeJS
+ <ol>
+    <li>
+      Download [NodeJS](https://nodejs.org/en/download/) and follow the installation instructions on that page.
+    </li>
+ </ol>
+ 
+# Clone the repo
+ 
+ HTTP
+ ```bash
+ git clone https://github.com/warrenlayson/wingaru-jobtest.git
+ ```
+
+SSH
+```bash
+git clone git@github.com:warrenlayson/wingaru-jobtest.git
+```
+
+Github CLI
+```
+gh repo clone warrenlayson/wingaru-jobtest
+```
 
 ## Installing Depedencies
 
