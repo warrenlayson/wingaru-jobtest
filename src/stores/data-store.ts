@@ -1,7 +1,18 @@
 import { writable } from 'svelte/store';
-import type { Data } from '../types';
+import { z } from 'zod';
 
-let stored: Data[] = [];
+const dataValidator = z.object({
+	name: z.string(),
+	email: z.string(),
+	dob: z.string(),
+	color: z.string(),
+	age: z.string(),
+	createdAt: z.string()
+});
+
+type DataType = z.infer<typeof dataValidator>;
+
+let stored: DataType[] = [];
 
 if (typeof window !== 'undefined') {
 	if (localStorage.getItem('data')) {
@@ -9,10 +20,57 @@ if (typeof window !== 'undefined') {
 	}
 }
 
-export const data = writable<Data[]>(stored);
+export const data = writable(stored);
 
-export const addData = (input: Data) => {
-	data.update((data) => [...data, input]);
+const formDataValidator = z.object({
+	name: z.string(),
+	email: z.string(),
+	dob: z.string(),
+	color: z.string()
+});
+
+type FormData = z.infer<typeof formDataValidator>;
+
+export const addData = (input: FormData) => {
+	const today = new Date();
+	const currentYear = today.getFullYear();
+	const currentMonth = today.getMonth() + 1;
+
+	const birthday = new Date(input.dob);
+	const dobYear = birthday.getFullYear();
+	const dobMonth = birthday.getMonth() + 1;
+
+	// get years
+	let yearsAge = currentYear - dobYear;
+
+	let monthAge: number;
+
+	// get months
+	if (currentMonth >= dobMonth) {
+		// get months when current month is greater
+		monthAge = currentMonth - dobMonth;
+	} else {
+		yearsAge -= 1;
+		monthAge = 12 + currentMonth - dobMonth;
+	}
+
+	// get birth month
+	let birthMonth: string;
+
+	if (dobMonth < 10) {
+		birthMonth = '0' + dobMonth;
+	} else {
+		birthMonth = dobMonth.toString();
+	}
+	data.update((data) => [
+		...data,
+		{
+			...input,
+			dob: `${birthMonth}/${dobYear}`,
+			age: `${yearsAge} years ${monthAge} months`,
+			createdAt: today.toISOString()
+		}
+	]);
 };
 
 data.subscribe((value) => {
