@@ -24,6 +24,18 @@ npm run dev
 npm run dev -- --open
 ```
 
+## Testing
+
+To test the application:
+
+```bash
+npm run test
+
+
+# or watch
+npm run test:watch
+```
+
 ## Building
 
 To create a production version of the app:
